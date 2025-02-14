@@ -5,7 +5,7 @@ TITLE Mouse sodium current
 NEURON {
   SUFFIX NaV
   USEION na READ ena WRITE ina
-  RANGE g, gbar
+  RANGE g, gbar, ina
 }
 
 UNITS { 
