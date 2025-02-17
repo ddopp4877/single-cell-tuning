@@ -50,7 +50,7 @@
     {
       "section": "soma", 
       "name": "gbar_Nap", 
-      "value": 0.0048, 
+      "value": 0.009, 
       "mechanism": "Nap"
     },
     {
@@ -92,31 +92,31 @@
     {
       "section": "soma", 
       "name": "gbar_SK", 
-      "value": 0, 
+      "value": 9.5e-2, 
       "mechanism": "SK"
     }, 
     {
       "section": "soma", 
       "name": "gbar_Ca_HVA", 
-      "value": 0, 
+      "value": 0.0006888, 
       "mechanism": "Ca_HVA"
     }, 
     {
       "section": "soma", 
       "name": "gbar_Ca_LVA", 
-      "value": 0, 
+      "value": 0.000492, 
       "mechanism": "Ca_LVA"
     }, 
     {
       "section": "soma", 
       "name": "gamma_CaDynamics", 
-      "value": 0.03775272217626989, 
+      "value": 0.003, 
       "mechanism": "CaDynamics"
     }, 
     {
       "section": "soma", 
       "name": "decay_CaDynamics", 
-      "value": 20.047842724993018, 
+      "value": 85.047842724993018, 
       "mechanism": "CaDynamics"
     }, 
     {
