@@ -56,4 +56,8 @@ PROCEDURE rates() {
 
 	mInf = mAlpha / (mAlpha + mBeta)
   mTau = (15 + 1 / (mAlpha + mBeta)) / qt
+
+if (v < -60) {
+mInf = 0
+}
 }

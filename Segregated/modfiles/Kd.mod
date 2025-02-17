@@ -61,10 +61,7 @@ PROCEDURE rates() {
   hTau = 1500
 
 	:Segregation
-        if (v < -65) {
-        mInf = 0.001 * v + 0.088
-        }
-        if (v < -65) {
+        if (v < -60) {
         mInf = 0
         }
 }

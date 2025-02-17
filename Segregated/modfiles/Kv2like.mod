@@ -77,7 +77,7 @@ PROCEDURE rates() {
 		}
 
 		:Segregation
-        if (v < -65) {
+        if (v < -60) {
         mInf = 0
         }
 	UNITSON

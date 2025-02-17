@@ -1,7 +1,8 @@
-: Reference: Colbert and Pan 2002
+:Reference : Modeled according to kinetics derived from Magistretti & Alonso 1999
+:Comment: corrected rates using q10 = 2.3, target temperature 34, orginal 21
 
 NEURON	{
-	SUFFIX NaTs
+	SUFFIX Nap
 	USEION na READ ena WRITE ina
 	RANGE gbar, g, ina
 }
@@ -14,16 +15,6 @@ UNITS	{
 
 PARAMETER	{
 	gbar = 0.00001 (S/cm2)
-
-	malphaF = 0.182
-	mbetaF = 0.124
-	mvhalf = -40 (mV)
-	mk = 6 (mV)
-
-	halphaF = 0.015
-	hbetaF = 0.015
-	hvhalf = -66 (mV)
-	hk = 6 (mV)
 }
 
 ASSIGNED	{
@@ -33,9 +24,6 @@ ASSIGNED	{
 	g	(S/cm2)
 	celsius (degC)
 	mInf
-	mTau
-	mAlpha
-	mBeta
 	hInf
 	hTau
 	hAlpha
@@ -43,44 +31,42 @@ ASSIGNED	{
 }
 
 STATE	{
-	m
 	h
 }
 
 BREAKPOINT	{
 	SOLVE states METHOD cnexp
-	g = gbar*m*m*m*h
+	rates()
+	g = gbar*mInf*h
 	ina = g*(v-ena)
 }
 
 DERIVATIVE states	{
 	rates()
-	m' = (mInf-m)/mTau
 	h' = (hInf-h)/hTau
 }
 
 INITIAL{
 	rates()
-	m = mInf
 	h = hInf
 }
 
 PROCEDURE rates(){
   LOCAL qt
-  qt = 2.3^((celsius-23)/10)
+  qt = 2.3^((celsius-21)/10)
 
 	UNITSOFF
-		mAlpha = malphaF * vtrap(-(v - mvhalf), mk)
-		mBeta = mbetaF * vtrap((v - mvhalf), mk)
+		mInf = 1.0/(1+exp((v- -52.6)/-4.6)) : assuming instantaneous activation as modeled by Magistretti and Alonso
 
-		mInf = mAlpha/(mAlpha + mBeta)
-		mTau = (1/(mAlpha + mBeta))/qt
+		hInf = 1.0/(1+exp((v- -48.8)/10))
+		hAlpha = 2.88e-6 * vtrap(v + 17, 4.63)
+		hBeta = 6.94e-6 * vtrap(-(v + 64.4), 2.63)
 
-		hAlpha = halphaF * vtrap(v - hvhalf, hk)
-		hBeta = hbetaF * vtrap(-(v - hvhalf), hk)
-
-		hInf = hAlpha/(hAlpha + hBeta)
 		hTau = (1/(hAlpha + hBeta))/qt
+
+	if (v < -60) {
+	mInf = 0
+	}
 	UNITSON
 }
 

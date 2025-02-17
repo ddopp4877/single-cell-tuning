@@ -66,7 +66,7 @@ PROCEDURE rates(){
 		hTau = (20.0000 + 50.0000/(1+exp((v - -40.000)/7)))/qt
 		v = v - 10
 		:Segregation
-        if (v < -65) {
+        if (v < -60) {
         mInf = 0
         }
 	UNITSON
