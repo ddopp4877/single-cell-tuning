@@ -1,0 +1,83 @@
+
+SST_High_tau_high_Rin:
+
+	R_in=235.935,
+	tau1=13.05,
+	tau2=36.35,
+	V_rest=-64.999)
+	Sag ratio: 0.921
+	soma_diam: 0.5
+	
+	no tuned FI
+	
+SST_fit_with_FI:
+
+	R_in=197.414,
+	tau1=11.35,
+	tau2=30.8,
+	V_rest=-65.47)
+	Sag ratio: 0.92
+	soma_diam: 1
+	
+	tuned FI
+	
+SST_Passive_high_Rin
+
+	R_in=272.27
+	tau1=15.425
+	tau2=32.85
+	V_rest=-64.4
+	Sag ratio: 0.90
+	soma_diam: 1
+	
+	no tuned FI
+	
+SST_Passive_less_high_Rin
+
+	R_in=231.976
+	tau1=11.875
+	tau2=32.725
+	V_rest=-64.999
+	Sag ratio: 0.908
+	
+	no tuned FI
+	
+SST_with_FI_for_split
+
+	soma_diam: 1
+	
+	stim: -0.1
+		R_in=244.0171000429926
+		tau1=10.0
+		tau2=26.15
+		V_rest=-69.01
+		Sag ratio: 0.8958
+		
+	
+	stim: -0.05
+		R_in=298.855
+		tau1=13.475
+		tau2=33.6
+		V_rest=-69.01
+		Sag ratio: 0.940
+		
+	partially tuned fit
+	
+PN_fit_everything
+
+	soma: 1.5
+	
+SST_one_com_FI_good_fit
+	soma: 6
+	tau: 16.35
+	Rin: 197
+	vrest: -64
+
+SST_one_cm_FI_better_fit
+	soma: 6
+	Sag ratio: 0.89
+	Rin: 199.75
+	tau1: 16.45
+	Vrest: -64.81
+	rheobase: 50
+	
