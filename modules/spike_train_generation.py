@@ -23,15 +23,36 @@ def homogeneous_poisson_timestamps(rate_hz, duration_ms):
 
 import numpy as np
 
-def inhomogeneous_poisson_timestamps(lambdas, win_length, dt=1.0):
+# def inhomogeneous_poisson_timestamps(lambdas, win_length, dt=1.0):
+#     """
+#     Generate spike timestamps using an inhomogeneous Poisson process.
+    
+#     Parameters:
+#         lambdas (list or np.ndarray): firing rates for each time window (in Hz or per timestep).
+#         win_length (int): number of time steps per window.
+#         dt (float): duration of each time step in ms (or your preferred time unit).
+    
+#     Returns:
+#         spike_times (list of float): spike timestamps across all windows.
+#     """
+#     spike_times = []
+#     for i, lambd in enumerate(lambdas):
+#         num_points = np.random.poisson(lambd)
+#         times_in_window = np.sort(np.random.uniform(0, win_length * dt, num_points))
+#         times_in_window += i * win_length * dt
+#         spike_times.extend(times_in_window.tolist())
+#     return spike_times
+
+def inhomogeneous_poisson_timestamps(lambdas, win_length, dt=1.0, start_time=0.0):
     """
     Generate spike timestamps using an inhomogeneous Poisson process.
-    
+
     Parameters:
         lambdas (list or np.ndarray): firing rates for each time window (in Hz or per timestep).
         win_length (int): number of time steps per window.
         dt (float): duration of each time step in ms (or your preferred time unit).
-    
+        start_time (float): time offset (in ms) to start generating spikes.
+
     Returns:
         spike_times (list of float): spike timestamps across all windows.
     """
@@ -39,10 +60,9 @@ def inhomogeneous_poisson_timestamps(lambdas, win_length, dt=1.0):
     for i, lambd in enumerate(lambdas):
         num_points = np.random.poisson(lambd)
         times_in_window = np.sort(np.random.uniform(0, win_length * dt, num_points))
-        times_in_window += i * win_length * dt
+        times_in_window += i * win_length * dt + start_time
         spike_times.extend(times_in_window.tolist())
     return spike_times
-
 
 # Independent non-homogeneous poisson
 # Generation: https://en.wikipedia.org/wiki/Poisson_point_process#Simulation
